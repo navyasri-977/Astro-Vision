@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AstroVision - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1400');
+      background-size: cover;
+      background-position: center;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero-content h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(30px, 6vw, 64px);
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero-content p {
+      color: #c8bfe0;
+      font-size: 18px;
+      max-width: 540px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .marquee-bar {
+      background: rgba(109, 40, 217, 0.15);
+      border-top: 1px solid #4a2d8a;
+      border-bottom: 1px solid #4a2d8a;
+      padding: 10px 0;
+      overflow: hidden;
+    }
+
+    .marquee-inner {
+      display: flex;
+      gap: 50px;
+      animation: scroll 18s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-inner span {
+      color: #c084fc;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      padding: 50px 20px;
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid #4a2d8a;
+      border-bottom: 1px solid #4a2d8a;
+    }
+
+    .stat h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 38px;
+      color: #c084fc;
+      text-align: center;
+    }
+
+    .stat p {
+      color: #9d8ec4;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 70px 20px;
+      background: rgba(109, 40, 217, 0.08);
+      border-top: 1px solid #4a2d8a;
+    }
+
+    .cta h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(20px, 4vw, 32px);
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: #9d8ec4;
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a class="brand" href="index.html">ASTROVISION</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="planets.html">Planets</a>
+      <a href="missions.html">Missions</a>
+      <a href="booking.html">Book Trip</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="login.html" class="nav-btn">Login</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>EXPLORE THE<br>INFINITE COSMOS</h1>
+      <p>Journey beyond the stars. Discover planets, track missions, and book your seat on humanity's greatest
+        adventure.</p>
+      <div class="hero-btns">
+        <a href="planets.html" class="btn btn-primary" style="text-decoration:none;display:inline-block;">Explore
+          Planets</a>
+        <a href="booking.html" class="btn btn-ghost" style="text-decoration:none;display:inline-block;">Book a Trip</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-bar">
+    <div class="marquee-inner">
+      <span>Mars Mission 2026</span><span>James Webb Discoveries</span><span>Artemis III Launch</span>
+      <span>Europa Ocean Life</span><span>Voyager Signal Received</span><span>Black Hole Imaging</span>
+      <span>Mars Mission 2026</span><span>James Webb Discoveries</span><span>Artemis III Launch</span>
+      <span>Europa Ocean Life</span><span>Voyager Signal Received</span><span>Black Hole Imaging</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">What We Offer</h2>
+    <p class="section-sub">Your complete space portal — from planetary data to mission archives.</p>
+    <div class="card-grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=600" alt="Planets">
+        <h3>PLANET EXPLORER</h3>
+        <p>Dive deep into all 8 planets. Get data on distance, moons, atmosphere, and stunning visuals.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1541185934-01b600ea069c?w=600" alt="Missions">
+        <h3>MISSION TRACKER</h3>
+        <p>Explore legendary missions from Apollo 11 to Voyager. Track current and upcoming launches.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600" alt="Space Trip">
+        <h3>BOOK A TRIP</h3>
+        <p>Reserve your seat on a simulated space voyage. Choose your destination and departure date.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=600" alt="Quiz">
+        <h3>SPACE QUIZ</h3>
+        <p>Test your cosmic knowledge with our space quiz. Earn ranks and track your explorer level.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <h2>8</h2>
+      <p>Planets Covered</p>
+    </div>
+    <div class="stat">
+      <h2>50+</h2>
+      <p>Space Missions</p>
+    </div>
+    <div class="stat">
+      <h2>12K</h2>
+      <p>Explorers Joined</p>
+    </div>
+    <div class="stat">
+      <h2>1969</h2>
+      <p>Year of Moon Landing</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>READY FOR LIFTOFF?</h2>
+    <p>Join thousands of space enthusiasts and begin your journey through the cosmos.</p>
+    <a href="login.html" class="btn btn-primary" style="text-decoration:none;display:inline-block;width:auto;">Create
+      Account</a>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="planets.html">Planets</a>
+      <a href="missions.html">Missions</a><a href="booking.html">Book Trip</a>
+      <a href="quiz.html">Quiz</a><a href="login.html">Login</a>
+    </div>
+    <p>contact@astrovision.space &nbsp;|&nbsp; +91 12345 67890</p>
+    <p style="margin-top:6px;">&copy; 2026 AstroVision. All rights reserved.</p>
+  </footer>
+
+</body>
+
+</html>

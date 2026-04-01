@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AstroVision - Missions</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .slider {
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slides {
+      display: flex;
+      width: 500%;
+      animation: slide 15s ease infinite;
+    }
+
+    .slide {
+      width: 20%;
+      height: 380px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 30px;
+    }
+
+    .slide-content {
+      background: rgba(5, 2, 15, 0.75);
+      padding: 18px 22px;
+      border-radius: 10px;
+      max-width: 500px;
+    }
+
+    .slide-content h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .slide-content p {
+      color: #9d8ec4;
+      font-size: 14px;
+    }
+
+    .slide-content small {
+      color: #c084fc;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    @keyframes slide {
+
+      0%,
+      18% {
+        transform: translateX(0)
+      }
+
+      22%,
+      40% {
+        transform: translateX(-20%)
+      }
+
+      44%,
+      62% {
+        transform: translateX(-40%)
+      }
+
+      66%,
+      82% {
+        transform: translateX(-60%)
+      }
+
+      86%,
+      100% {
+        transform: translateX(-80%)
+      }
+    }
+
+    .timeline {
+      padding-left: 20px;
+      border-left: 2px solid #4a2d8a;
+    }
+
+    .t-item {
+      margin-bottom: 28px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .t-item::before {
+      content: '';
+      position: absolute;
+      left: -27px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #a855f7;
+      border: 2px solid #05020f;
+    }
+
+    .t-item h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 13px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .t-item p {
+      color: #9d8ec4;
+      font-size: 13px;
+    }
+
+    .t-year {
+      color: #c084fc;
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-bottom: 3px;
+    }
+
+    .float-img {
+      float: left;
+      width: 200px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin: 0 22px 10px 0;
+      border: 1px solid #4a2d8a;
+    }
+
+    .float-img.right {
+      float: right;
+      margin: 0 0 10px 22px;
+    }
+
+    .clearfix::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .float-text h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .float-text p {
+      color: #9d8ec4;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .row {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .col {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      margin-top: 8px;
+    }
+
+    .status.done {
+      background: rgba(34, 197, 94, 0.15);
+      color: #86efac;
+      border: 1px solid rgba(134, 239, 172, 0.3);
+    }
+
+    .status.active {
+      background: rgba(251, 191, 36, 0.15);
+      color: #fcd34d;
+      border: 1px solid rgba(252, 211, 77, 0.3);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a class="brand" href="index.html">ASTROVISION</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="planets.html">Planets</a>
+      <a href="missions.html" class="active">Missions</a>
+      <a href="booking.html">Book Trip</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="login.html" class="nav-btn">Login</a>
+    </div>
+  </nav>
+
+  <div class="slider">
+    <div class="slides">
+      <div class="slide"
+        style="background-image:url('https://images.unsplash.com/photo-1614726365952-510103b1bfb4?w=1200')">
+        <div class="slide-content"><small>JULY 20, 1969</small>
+          <h2>Apollo 11</h2>
+          <p>Humanity's first steps on the Moon. "One giant leap for mankind."</p>
+        </div>
+      </div>
+      <div class="slide"
+        style="background-image:url('https://images.unsplash.com/photo-1612892483236-52d32a0e0ac1?w=1200')">
+        <div class="slide-content"><small>LAUNCHED 1977</small>
+          <h2>Voyager 1</h2>
+          <p>Now 24 billion km away — the most distant human-made object.</p>
+        </div>
+      </div>
+      <div class="slide"
+        style="background-image:url('https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?w=1200')">
+        <div class="slide-content"><small>2012 — PRESENT</small>
+          <h2>Curiosity Rover</h2>
+          <p>Still roaming Mars after 12 years, traveling over 32 km on the surface.</p>
+        </div>
+      </div>
+      <div class="slide"
+        style="background-image:url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1200')">
+        <div class="slide-content"><small>LAUNCHED 2021</small>
+          <h2>James Webb Telescope</h2>
+          <p>Peering back 13.6 billion years — revealing the first galaxies.</p>
+        </div>
+      </div>
+      <div class="slide"
+        style="background-image:url('https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=1200')">
+        <div class="slide-content"><small>UPCOMING 2026</small>
+          <h2>Artemis III</h2>
+          <p>First crewed Moon landing since Apollo 17 in 1972.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Historic Space Missions</h2>
+    <p class="section-sub">Humanity's greatest achievements in space exploration.</p>
+    <div class="card-grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1541185934-01b600ea069c?w=600" alt="Sputnik"
+          style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:12px;">
+        <h3>Sputnik 1</h3>
+        <p>The world's first artificial satellite, launched in 1957, marking the dawn of the Space Age.</p>
+        <span class="status done">Completed</span>
+      </div>
+      <div class="card">
+        <img src="Appolo11.webp" alt="Apollo"
+          style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:12px;">
+        <h3>Apollo 11</h3>
+        <p>Neil Armstrong and Buzz Aldrin become the first humans to walk on the Moon on July 20, 1969.</p>
+        <span class="status done">Completed</span>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600" alt="Hubble"
+          style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:12px;">
+        <h3>Hubble Telescope</h3>
+        <p>Over 1.5 million observations since 1990 — revolutionizing our understanding of the universe.</p>
+        <span class="status active">Still Active</span>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=600" alt="Mangalyaan"
+          style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:12px;">
+        <h3>Mangalyaan (ISRO)</h3>
+        <p>India's Mars Orbiter Mission — first Asian nation to reach Mars orbit, in its very first attempt.</p>
+        <span class="status done">Completed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Mission Deep Dives</h2>
+    <div style="margin-bottom:40px;" class="clearfix">
+      <img class="float-img" src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=400" alt="James Webb">
+      <div class="float-text">
+        <h3>James Webb Space Telescope</h3>
+        <p>Launched on December 25, 2021, the James Webb Space Telescope operates 1.5 million km from Earth. It observes
+          the universe in infrared, allowing it to see through cosmic dust clouds and detect light from the universe's
+          first galaxies — formed just 300 million years after the Big Bang. Its images have already rewritten textbooks
+          on galaxy formation and stellar evolution.</p>
+      </div>
+    </div>
+    <div class="clearfix">
+      <img class="float-img right" src="https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?w=400"
+        alt="Perseverance">
+      <div class="float-text">
+        <h3>Perseverance Rover — Mars 2020</h3>
+        <p>NASA's Perseverance Rover landed on Mars in February 2021. It is the most sophisticated rover ever sent to
+          another planet, equipped with 23 cameras, a drill for collecting rock samples, and the Ingenuity helicopter —
+          the first powered aircraft to fly on another world. It is also producing oxygen from the Martian atmosphere.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Mission Timeline</h2>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-year">1957</div>
+        <h4>Sputnik 1 Launch</h4>
+        <p>First artificial satellite — the Space Age begins.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">1961</div>
+        <h4>Yuri Gagarin — First Human in Space</h4>
+        <p>Soviet cosmonaut completes one orbit of Earth in Vostok 1.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">1969</div>
+        <h4>Moon Landing — Apollo 11</h4>
+        <p>Humanity takes its first steps on another world.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">1990</div>
+        <h4>Hubble Space Telescope</h4>
+        <p>Opens humanity's eyes to the deep universe.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2013</div>
+        <h4>Mangalyaan — ISRO</h4>
+        <p>India becomes the first Asian nation to reach Mars orbit.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2021</div>
+        <h4>James Webb Telescope Launch</h4>
+        <p>The most powerful eye on the cosmos begins its journey.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2026</div>
+        <h4>Artemis III — Moon Return</h4>
+        <p>First crewed lunar landing since 1972.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="planets.html">Planets</a>
+      <a href="missions.html">Missions</a><a href="booking.html">Book Trip</a>
+    </div>
+    <p>&copy; 2026 AstroVision. All rights reserved.</p>
+  </footer>
+
+</body>
+
+</html>

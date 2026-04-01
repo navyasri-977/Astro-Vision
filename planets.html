@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroVision - Planets</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .planet-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            margin-right: 4px;
+            margin-top: 8px;
+            background: rgba(109, 40, 217, 0.2);
+            color: #c084fc;
+            border: 1px solid #4a2d8a;
+        }
+
+        .iframe-wrap {
+            border: 1px solid #4a2d8a;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .iframe-label {
+            padding: 12px 16px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            color: #c084fc;
+            border-bottom: 1px solid #4a2d8a;
+            letter-spacing: 1px;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .col {
+            flex: 1;
+            min-width: 260px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a class="brand" href="index.html">ASTROVISION</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="planets.html" class="active">Planets</a>
+            <a href="missions.html">Missions</a>
+            <a href="booking.html">Book Trip</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="login.html" class="nav-btn">Login</a>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <h1>EXPLORE THE PLANETS</h1>
+        <p>Eight worlds, billions of mysteries. Discover what makes each planet unique.</p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Our Solar System</h2>
+        <p class="section-sub">Click any planet to learn more about it.</p>
+        <div class="card-grid">
+            <div class="card">
+                <img class="planet-img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Mercury_in_true_color.jpg/600px-Mercury_in_true_color.jpg"
+                    alt="Mercury">
+                <h3>Mercury</h3>
+                <p>The smallest and fastest planet, orbiting the Sun in just 88 Earth days.</p>
+                <span class="badge">Rocky</span><span class="badge">0 Moons</span>
+            </div>
+            <div class="card">
+                <img class="planet-img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Venus-real_color.jpg/600px-Venus-real_color.jpg"
+                    alt="Venus">
+                <h3>Venus</h3>
+                <p>Earth's toxic twin — surface temperatures hot enough to melt lead.</p>
+                <span class="badge">Rocky</span><span class="badge">0 Moons</span>
+            </div>
+            <div class="card">
+                <img class="planet-img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/600px-The_Earth_seen_from_Apollo_17.jpg"
+                    alt="Earth">
+                <h3>Earth</h3>
+                <p>Our cosmic home — the only known planet with life and liquid water oceans.</p>
+                <span class="badge">Rocky</span><span class="badge">1 Moon</span>
+            </div>
+            <div class="card">
+                <img class="planet-img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/600px-OSIRIS_Mars_true_color.jpg"
+                    alt="Mars">
+                <h3>Mars</h3>
+                <p>The Red Planet — humanity's next destination with the tallest volcano in the solar system.</p>
+                <span class="badge">Rocky</span><span class="badge">2 Moons</span>
+            </div>
+            <div class="card">
+                <img class="planet-img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg/600px-Jupiter_and_its_shrunken_Great_Red_Spot.jpg"
+                    alt="Jupiter">
+                <h3>Jupiter</h3>
+                <p>King of planets. Its Great Red Spot storm has been raging for over 350 years.</p>
+                <span class="badge">Gas Giant</span><span class="badge">95 Moons</span>
+            </div>
+            <div class="card">
+                <img class="planet-img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/600px-Saturn_during_Equinox.jpg"
+                    alt="Saturn">
+                <h3>Saturn</h3>
+                <p>The jewel of the solar system with magnificent rings stretching 282,000 km.</p>
+                <span class="badge">Gas Giant</span><span class="badge">146 Moons</span>
+            </div>
+            <div class="card">
+                <img class="planet-img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/600px-Uranus2.jpg"
+                    alt="Uranus">
+                <h3>Uranus</h3>
+                <p>The sideways planet — tilted 98° on its axis with a blue-green methane atmosphere.</p>
+                <span class="badge">Ice Giant</span><span class="badge">28 Moons</span>
+            </div>
+            <div class="card">
+                <img class="planet-img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Neptune_-_Voyager_2_%2829347980845%29_flatten_crop.jpg/600px-Neptune_-_Voyager_2_%2829347980845%29_flatten_crop.jpg"
+                    alt="Neptune">
+                <h3>Neptune</h3>
+                <p>The windiest planet with storms reaching 2,100 km/h — the farthest from the Sun.</p>
+                <span class="badge">Ice Giant</span><span class="badge">16 Moons</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Planetary Data Table</h2>
+        <p class="section-sub">Comparative statistics across all eight planets.</p>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="7" style="text-align:center;">Solar System — Planetary Statistics</th>
+                    </tr>
+                    <tr>
+                        <th>Planet</th>
+                        <th>Type</th>
+                        <th>Distance from Sun</th>
+                        <th>Diameter (km)</th>
+                        <th>Moons</th>
+                        <th>Orbital Period</th>
+                        <th>Avg Temp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mercury</td>
+                        <td>Rocky</td>
+                        <td>57.9M km</td>
+                        <td>4,879</td>
+                        <td rowspan="2" style="text-align:center;vertical-align:middle;">0</td>
+                        <td>88 days</td>
+                        <td>167°C</td>
+                    </tr>
+                    <tr>
+                        <td>Venus</td>
+                        <td>Rocky</td>
+                        <td>108.2M km</td>
+                        <td>12,104</td>
+                        <td>225 days</td>
+                        <td>464°C</td>
+                    </tr>
+                    <tr>
+                        <td>Earth</td>
+                        <td>Rocky</td>
+                        <td>149.6M km</td>
+                        <td>12,756</td>
+                        <td style="text-align:center">1</td>
+                        <td>365 days</td>
+                        <td>15°C</td>
+                    </tr>
+                    <tr>
+                        <td>Mars</td>
+                        <td>Rocky</td>
+                        <td>227.9M km</td>
+                        <td>6,792</td>
+                        <td style="text-align:center">2</td>
+                        <td>687 days</td>
+                        <td>-65°C</td>
+                    </tr>
+                    <tr>
+                        <td>Jupiter</td>
+                        <td>Gas Giant</td>
+                        <td>778.5M km</td>
+                        <td>142,984</td>
+                        <td style="text-align:center">95</td>
+                        <td>11.9 years</td>
+                        <td>-110°C</td>
+                    </tr>
+                    <tr>
+                        <td>Saturn</td>
+                        <td>Gas Giant</td>
+                        <td>1.43B km</td>
+                        <td>120,536</td>
+                        <td style="text-align:center">146</td>
+                        <td>29.5 years</td>
+                        <td>-140°C</td>
+                    </tr>
+                    <tr>
+                        <td>Uranus</td>
+                        <td>Ice Giant</td>
+                        <td>2.87B km</td>
+                        <td>51,118</td>
+                        <td style="text-align:center">28</td>
+                        <td>84 years</td>
+                        <td>-195°C</td>
+                    </tr>
+                    <tr>
+                        <td>Neptune</td>
+                        <td>Ice Giant</td>
+                        <td>4.5B km</td>
+                        <td>49,528</td>
+                        <td style="text-align:center">16</td>
+                        <td>165 years</td>
+                        <td>-200°C</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Space Facts and Glossary</h2>
+        <div class="row">
+            <div class="col">
+                <div class="list-box">
+                    <h3>Planet Rankings by Size</h3>
+                    <ol>
+                        <li><strong>Jupiter</strong> — Largest (142,984 km diameter)</li>
+                        <li><strong>Saturn</strong> — Second largest, famous rings</li>
+                        <li><strong>Uranus</strong> — Third largest ice giant</li>
+                        <li><strong>Neptune</strong> — Windiest planet</li>
+                        <li><strong>Earth</strong> — Only known life-bearing world</li>
+                        <li><strong>Venus</strong> — Hottest surface (464°C)</li>
+                        <li><strong>Mars</strong> — Humanity's next target</li>
+                        <li><strong>Mercury</strong> — Smallest, fastest orbit</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col">
+                <div class="list-box">
+                    <h3>Amazing Space Facts</h3>
+                    <ul>
+                        <li>A day on <strong>Venus</strong> is longer than its year</li>
+                        <li><strong>Saturn</strong> would float in a giant bathtub</li>
+                        <li>There are more stars than grains of sand on Earth</li>
+                        <li>Light from the Sun takes 8 minutes to reach Earth</li>
+                        <li>Space is completely silent — no medium for sound</li>
+                        <li><strong>Jupiter's</strong> Great Red Spot is slowly shrinking</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="list-box">
+                    <h3>Space Glossary</h3>
+                    <dl>
+                        <dt>Nebula</dt>
+                        <dd>A giant cloud of gas and dust where new stars are born.</dd>
+                        <dt>Black Hole</dt>
+                        <dd>A region where gravity is so strong not even light escapes.</dd>
+                        <dt>Light Year</dt>
+                        <dd>The distance light travels in one year — 9.46 trillion km.</dd>
+                        <dt>Exoplanet</dt>
+                        <dd>A planet orbiting a star outside our solar system.</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Featured Media</h2>
+        <div class="row">
+            <div class="col">
+                <div class="iframe-wrap">
+                    <div class="iframe-label">NASA — Solar System Overview</div>
+                    <iframe width="100%" height="260" src="https://www.youtube.com/embed/libKVRa01L8"
+                        title="Solar System" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col">
+                <div class="iframe-wrap">
+                    <div class="iframe-label">Solar System — Wikipedia</div>
+                    <iframe src="https://en.wikipedia.org/wiki/Solar_System" width="100%" height="260"
+                        frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a><a href="planets.html">Planets</a>
+            <a href="missions.html">Missions</a><a href="booking.html">Book Trip</a>
+        </div>
+        <p>&copy; 2026 AstroVision. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

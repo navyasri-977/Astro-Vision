@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AstroVision - Book a Trip</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .dest-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .dest-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 2px solid #4a2d8a;
+      border-radius: 10px;
+      padding: 14px 18px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s;
+      min-width: 110px;
+    }
+
+    .dest-card:hover,
+    .dest-card.selected {
+      border-color: #a855f7;
+      background: rgba(168, 85, 247, 0.1);
+    }
+
+    .dest-card img {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 6px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .dest-card p {
+      color: #fff;
+      font-size: 12px;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    .dest-card small {
+      color: #9d8ec4;
+      font-size: 11px;
+    }
+
+    .price-row {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid #4a2d8a;
+      border-radius: 8px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .price-row span {
+      color: #9d8ec4;
+      font-size: 13px;
+    }
+
+    .price-row strong {
+      font-family: 'Orbitron', sans-serif;
+      color: #c084fc;
+      font-size: 18px;
+    }
+
+    .row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .col {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .success-box {
+      display: none;
+      background: rgba(109, 40, 217, 0.12);
+      border: 1px solid #4a2d8a;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .success-box h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .success-box p {
+      color: #9d8ec4;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a class="brand" href="index.html">ASTROVISION</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="planets.html">Planets</a>
+      <a href="missions.html">Missions</a>
+      <a href="booking.html" class="active">Book Trip</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="login.html" class="nav-btn">Login</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <h1>BOOK YOUR SPACE TRIP</h1>
+    <p>Reserve your seat on humanity's most extraordinary journey.</p>
+  </div>
+
+  <div class="form-section">
+    <div id="success-box" class="success-box">
+      <h3>Mission Confirmed!</h3>
+      <p id="success-text">Your space voyage has been booked. Prepare for liftoff!</p>
+    </div>
+
+    <h3 style="font-family:'Orbitron',sans-serif;font-size:14px;color:#fff;margin-bottom:14px;letter-spacing:1px;">
+      SELECT DESTINATION</h3>
+    <div class="dest-grid">
+      <div class="dest-card" onclick="selectDest(this,'Moon','12,00,000','3 days')">
+        <img src="moon.webp"
+          alt="Moon">
+        <p>MOON</p><small>3 days</small>
+      </div>
+      <div class="dest-card" onclick="selectDest(this,'Mars','4,80,00,000','6 months')">
+        <img
+          src="mars.jpg"
+          alt="Mars">
+        <p>MARS</p><small>6 months</small>
+      </div>
+      <div class="dest-card" onclick="selectDest(this,'Space Station','2,50,00,000','2 weeks')">
+        <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=240" alt="ISS">
+        <p>ISS</p><small>2 weeks</small>
+      </div>
+      <div class="dest-card" onclick="selectDest(this,'Venus Flyby','8,00,00,000','4 months')">
+        <img
+          src="venus.webp"
+          alt="Venus">
+        <p>VENUS</p><small>4 months</small>
+      </div>
+    </div>
+    <div class="price-row" id="price-row" style="display:none">
+      <span>Estimated Cost</span>
+      <strong id="price-val">—</strong>
+    </div>
+
+    <form id="booking-form" onsubmit="submitForm(event)">
+      <fieldset>
+        <legend>Personal Information</legend>
+        <div class="row">
+          <div class="col"><label>First Name</label><input type="text" id="fname" placeholder="First name" required>
+            <div class="err" id="fname-err">First name required</div>
+          </div>
+          <div class="col"><label>Last Name</label><input type="text" id="lname" placeholder="Last name" required></div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col"><label>Date of Birth</label><input type="date" id="dob" max="2005-12-31"></div>
+          <div class="col">
+            <label>Gender</label>
+            <div class="radio-group">
+              <label><input type="radio" name="gender" value="male"> Male</label>
+              <label><input type="radio" name="gender" value="female"> Female</label>
+              <label><input type="radio" name="gender" value="other"> Other</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Contact Details</legend>
+        <div class="row">
+          <div class="col"><label>Email</label><input type="email" id="email" placeholder="you@cosmos.com">
+            <div class="err" id="email-err">Valid email required</div>
+          </div>
+          <div class="col"><label>Phone Number</label><input type="tel" id="phone" placeholder="10-digit number"
+              pattern="[0-9]{10}"></div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col">
+            <label>Current State</label>
+            <select id="state">
+              <option value="">Select state</option>
+              <option>Andhra Pradesh</option>
+              <option>Telangana</option>
+              <option>Tamil Nadu</option>
+              <option>Karnataka</option>
+              <option>Kerala</option>
+              <option>Maharashtra</option>
+              <option>Delhi</option>
+            </select>
+          </div>
+          <div class="col"><label>Year of Birth</label><input type="number" placeholder="e.g. 1999" min="1950"
+              max="2005"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Mission Details</legend>
+        <div class="row">
+          <div class="col"><label>Departure Date</label><input type="date" min="2026-01-01"></div>
+          <div class="col">
+            <label>Cabin Class</label>
+            <select>
+              <option>Economy Pod</option>
+              <option>Business Capsule</option>
+              <option>Luxury Suite</option>
+              <option>Commander's Quarters</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <label>Space Experience Level</label>
+        <div class="radio-group">
+          <label><input type="radio" name="exp" value="beginner" checked> Beginner</label>
+          <label><input type="radio" name="exp" value="intermediate"> Intermediate</label>
+          <label><input type="radio" name="exp" value="advanced"> Advanced</label>
+        </div>
+        <br>
+        <label>Add-On Experiences</label>
+        <div class="check-group">
+          <label><input type="checkbox"> Space Walk (EVA)</label>
+          <label><input type="checkbox"> Private Telescope Session</label>
+          <label><input type="checkbox"> Space Photography Package</label>
+        </div>
+        <br>
+        <label>Upload Profile Photo</label>
+        <input type="file" accept="image/*">
+        <br><br>
+        <label>Special Requests / Medical Notes</label>
+        <textarea placeholder="Any medical conditions, dietary needs, or special requests..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Consent</legend>
+        <div class="check-group">
+          <label><input type="checkbox"> I understand space travel involves inherent risks</label>
+          <label><input type="checkbox" id="terms"> I agree to AstroVision Terms and Conditions</label>
+          <label><input type="checkbox"> Notify me via Email about mission updates</label>
+          <label><input type="checkbox"> Notify me via SMS about launch alerts</label>
+        </div>
+        <div class="err" id="terms-err">You must accept the terms to proceed</div>
+      </fieldset>
+
+      <button type="submit" class="btn btn-primary">Confirm Mission Booking</button>
+      <button type="reset" class="btn btn-ghost" style="width:100%;margin-top:10px;" onclick="resetForm()">Reset
+        Form</button>
+    </form>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="planets.html">Planets</a>
+      <a href="missions.html">Missions</a><a href="booking.html">Book Trip</a>
+    </div>
+    <p>&copy; 2026 AstroVision. All rights reserved.</p>
+  </footer>
+
+  <script>
+    let selectedDest = '';
+    function selectDest(el, name, price, days) {
+      document.querySelectorAll('.dest-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedDest = name;
+      document.getElementById('price-val').textContent = 'Rs. ' + price + ' — ' + days;
+      document.getElementById('price-row').style.display = 'flex';
+    }
+    function submitForm(e) {
+      e.preventDefault();
+      const fname = document.getElementById('fname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const terms = document.getElementById('terms').checked;
+      let ok = true;
+      document.getElementById('fname-err').style.display = !fname ? 'block' : 'none'; if (!fname) ok = false;
+      document.getElementById('email-err').style.display = (!email || !email.includes('@')) ? 'block' : 'none'; if (!email || !email.includes('@')) ok = false;
+      document.getElementById('terms-err').style.display = !terms ? 'block' : 'none'; if (!terms) ok = false;
+      if (ok) {
+        document.getElementById('success-text').textContent = 'Welcome, ' + fname + '! Your trip to ' + (selectedDest || 'space') + ' is confirmed!';
+        document.getElementById('success-box').style.display = 'block';
+        document.getElementById('booking-form').style.display = 'none';
+      }
+    }
+    function resetForm() {
+      selectedDest = '';
+      document.querySelectorAll('.dest-card').forEach(c => c.classList.remove('selected'));
+      document.getElementById('price-row').style.display = 'none';
+      document.querySelectorAll('.err').forEach(e => e.style.display = 'none');
+    }
+  </script>
+</body>
+
+</html>

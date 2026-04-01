@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AstroVision - Space Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .quiz-wrap {
+      max-width: 680px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .screen {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid #4a2d8a;
+      border-radius: 14px;
+      padding: 40px;
+    }
+
+    .screen h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .screen p {
+      color: #9d8ec4;
+      font-size: 15px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .info-row {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .info-box {
+      background: rgba(109, 40, 217, 0.15);
+      border: 1px solid #4a2d8a;
+      border-radius: 8px;
+      padding: 12px 22px;
+      text-align: center;
+    }
+
+    .info-box strong {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 22px;
+      color: #c084fc;
+      display: block;
+    }
+
+    .info-box span {
+      color: #9d8ec4;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .prog-bar {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      height: 6px;
+      margin-bottom: 22px;
+    }
+
+    .prog-fill {
+      height: 100%;
+      background: #6d28d9;
+      border-radius: 10px;
+      transition: width 0.4s;
+    }
+
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .q-meta span {
+      color: #9d8ec4;
+      font-size: 13px;
+    }
+
+    .timer {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      color: #c084fc;
+    }
+
+    .timer.urgent {
+      color: #f87171;
+    }
+
+    .q-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .opt {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid #4a2d8a;
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: #e2d9f3;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Rajdhani', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .opt:hover:not(:disabled) {
+      border-color: #a855f7;
+      background: rgba(168, 85, 247, 0.1);
+    }
+
+    .opt.correct {
+      border-color: #22c55e;
+      background: rgba(34, 197, 94, 0.12);
+      color: #86efac;
+    }
+
+    .opt.wrong {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+      color: #fca5a5;
+    }
+
+    .opt:disabled {
+      cursor: default;
+    }
+
+    .feedback {
+      font-size: 14px;
+      min-height: 20px;
+      margin-bottom: 16px;
+      color: #9d8ec4;
+    }
+
+    .feedback.correct {
+      color: #86efac;
+    }
+
+    .feedback.wrong {
+      color: #fca5a5;
+    }
+
+    .btn-next {
+      display: none;
+      width: 100%;
+    }
+
+    .score-big {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 56px;
+      color: #c084fc;
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .rank {
+      display: inline-block;
+      background: rgba(109, 40, 217, 0.2);
+      border: 1px solid #4a2d8a;
+      border-radius: 20px;
+      padding: 6px 20px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: #c084fc;
+      margin-bottom: 14px;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 18px 0 24px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid #4a2d8a;
+      border-radius: 8px;
+      padding: 12px 22px;
+      text-align: center;
+    }
+
+    .stat-box strong {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 22px;
+      color: #c084fc;
+      display: block;
+    }
+
+    .stat-box span {
+      color: #9d8ec4;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    @media(max-width:480px) {
+      .options {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a class="brand" href="index.html">ASTROVISION</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="planets.html">Planets</a>
+      <a href="missions.html">Missions</a>
+      <a href="booking.html">Book Trip</a>
+      <a href="quiz.html" class="active">Quiz</a>
+      <a href="login.html" class="nav-btn">Login</a>
+    </div>
+  </nav>
+
+  <div class="quiz-wrap">
+
+    <div id="start-screen" class="screen" style="text-align:center;">
+      <img src="https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=600" alt="Space Quiz"
+        style="width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:20px;">
+      <h2>Space Explorer Quiz</h2>
+      <p>Test your cosmic knowledge across planets, missions, and astronomical phenomena. How far does your knowledge
+        stretch?</p>
+      <div class="info-row">
+        <div class="info-box"><strong>10</strong><span>QUESTIONS</span></div>
+        <div class="info-box"><strong>15s</strong><span>PER QUESTION</span></div>
+        <div class="info-box"><strong>10 pts</strong><span>EACH</span></div>
+      </div>
+      <button class="btn btn-primary" onclick="startQuiz()">Begin Mission</button>
+    </div>
+
+    <div id="quiz-screen" class="screen" style="display:none;">
+      <div class="prog-bar">
+        <div class="prog-fill" id="prog" style="width:0%"></div>
+      </div>
+      <div class="q-meta">
+        <span>Question <span id="q-num">1</span> / 10</span>
+        <span class="timer" id="timer">15</span>
+      </div>
+      <div class="q-text" id="q-text"></div>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <button class="btn btn-primary btn-next" id="btn-next" onclick="nextQ()">Next Question</button>
+    </div>
+
+    <div id="result-screen" class="screen" style="display:none;text-align:center;">
+      <h2>Mission Complete!</h2>
+      <div class="score-big" id="final-score">0/100</div>
+      <div class="rank" id="rank-badge">RANK: SPACE CADET</div>
+      <p id="result-msg">Keep exploring the cosmos!</p>
+      <div class="stat-row">
+        <div class="stat-box"><strong id="r-correct">0</strong><span>CORRECT</span></div>
+        <div class="stat-box"><strong id="r-wrong">0</strong><span>WRONG</span></div>
+        <div class="stat-box"><strong id="r-time">0s</strong><span>AVG TIME</span></div>
+      </div>
+      <button class="btn btn-primary" onclick="restartQuiz()">Retake Quiz</button>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="planets.html">Planets</a>
+      <a href="missions.html">Missions</a><a href="booking.html">Book Trip</a>
+    </div>
+    <p>&copy; 2026 AstroVision. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const allQ = [
+      { q: "Which planet is known as the Red Planet?", opts: ["Venus", "Mars", "Jupiter", "Saturn"], ans: 1, fact: "Mars gets its red color from iron oxide (rust) on its surface." },
+      { q: "How many moons does Earth have?", opts: ["0", "1", "2", "3"], ans: 1, fact: "Earth has one natural satellite — the Moon." },
+      { q: "What is the largest planet in our solar system?", opts: ["Saturn", "Neptune", "Jupiter", "Uranus"], ans: 2, fact: "Jupiter could fit all other planets inside it more than twice." },
+      { q: "Which telescope was launched on December 25, 2021?", opts: ["Hubble", "Spitzer", "James Webb", "Chandra"], ans: 2, fact: "James Webb can see back 13.6 billion years to the first galaxies." },
+      { q: "What is the speed of light?", opts: ["3×10⁸ m/s", "3×10⁶ m/s", "3×10¹⁰ m/s", "3×10⁴ m/s"], ans: 0, fact: "Light travels 299,792,458 metres per second." },
+      { q: "Which country launched the first satellite Sputnik 1?", opts: ["USA", "India", "China", "Soviet Union"], ans: 3, fact: "Sputnik 1 was launched by the USSR on October 4, 1957." },
+      { q: "How long does sunlight take to reach Earth?", opts: ["8 seconds", "8 minutes", "8 hours", "8 days"], ans: 1, fact: "The Sun is 150 million km away — light takes 8 minutes 20 seconds." },
+      { q: "Which Indian mission successfully reached Mars orbit?", opts: ["Chandrayaan-1", "ASTROSAT", "Mangalyaan", "GSAT-20"], ans: 2, fact: "Mangalyaan made India the first Asian nation to reach Mars orbit." },
+      { q: "What is a light year?", opts: ["Age of a star", "Distance light travels in one year", "Speed of light", "Mass of a photon"], ans: 1, fact: "One light year equals about 9.46 trillion kilometres." },
+      { q: "Which planet currently has the most moons?", opts: ["Jupiter", "Saturn", "Uranus", "Neptune"], ans: 1, fact: "Saturn holds the record with 146 confirmed moons as of 2023." },
+      { q: "Who was the first human to walk on the Moon?", opts: ["Buzz Aldrin", "Yuri Gagarin", "Neil Armstrong", "Michael Collins"], ans: 2, fact: "Neil Armstrong stepped onto the Moon on July 20, 1969." },
+      { q: "Which planet rotates on its side with a 98 degree axial tilt?", opts: ["Neptune", "Saturn", "Uranus", "Venus"], ans: 2, fact: "Uranus was likely knocked sideways by a massive collision." },
+      { q: "What is the hottest planet in our solar system?", opts: ["Mercury", "Venus", "Mars", "Jupiter"], ans: 1, fact: "Venus is hotter than Mercury due to its thick CO2 atmosphere." },
+      { q: "How many planets are in our solar system?", opts: ["7", "8", "9", "10"], ans: 1, fact: "Pluto was reclassified as a dwarf planet in 2006, leaving 8 planets." },
+      { q: "What causes a solar eclipse?", opts: ["Earth blocks Sun", "Moon blocks Sun from Earth", "Sun moves behind Earth", "None of these"], ans: 1, fact: "A solar eclipse occurs when the Moon's shadow falls on Earth." },
+    ];
+
+    let questions = [], cur = 0, score = 0, correct = 0, wrong = 0, totalTime = 0, answered = false, timerInt;
+
+    function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+
+    function startQuiz() {
+      questions = shuffle(allQ).slice(0, 10);
+      cur = 0; score = 0; correct = 0; wrong = 0; totalTime = 0;
+      document.getElementById('start-screen').style.display = 'none';
+      document.getElementById('quiz-screen').style.display = 'block';
+      loadQ();
+    }
+
+    function loadQ() {
+      answered = false;
+      const q = questions[cur];
+      document.getElementById('q-num').textContent = cur + 1;
+      document.getElementById('prog').style.width = ((cur / 10) * 100) + '%';
+      document.getElementById('q-text').textContent = q.q;
+      document.getElementById('feedback').textContent = '';
+      document.getElementById('feedback').className = 'feedback';
+      document.getElementById('btn-next').style.display = 'none';
+      const box = document.getElementById('options');
+      box.innerHTML = '';
+      q.opts.forEach((opt, i) => {
+        const b = document.createElement('button');
+        b.className = 'opt'; b.textContent = opt;
+        b.onclick = () => checkAns(i, q.ans, q.fact);
+        box.appendChild(b);
+      });
+      startTimer();
+    }
+
+    function startTimer() {
+      clearInterval(timerInt);
+      let t = 15;
+      const el = document.getElementById('timer');
+      el.textContent = t; el.className = 'timer';
+      timerInt = setInterval(() => {
+        t--;
+        el.textContent = t;
+        if (t <= 5) el.className = 'timer urgent';
+        if (t <= 0) { clearInterval(timerInt); if (!answered) { answered = true; totalTime += 15; wrong++; document.getElementById('feedback').textContent = 'Time up! Answer: ' + questions[cur].opts[questions[cur].ans]; document.getElementById('feedback').className = 'feedback wrong'; disableOpts(); document.getElementById('btn-next').style.display = 'block'; } }
+      }, 1000);
+    }
+
+    function checkAns(sel, correct_idx, fact) {
+      if (answered) return;
+      answered = true; clearInterval(timerInt);
+      const elapsed = 15 - parseInt(document.getElementById('timer').textContent);
+      totalTime += elapsed;
+      const btns = document.querySelectorAll('.opt');
+      const fb = document.getElementById('feedback');
+      if (sel === correct_idx) { score += 10; correct++; btns[sel].classList.add('correct'); fb.textContent = 'Correct! ' + fact; fb.className = 'feedback correct'; }
+      else { wrong++; btns[sel].classList.add('wrong'); btns[correct_idx].classList.add('correct'); fb.textContent = 'Wrong! ' + fact; fb.className = 'feedback wrong'; }
+      disableOpts();
+      document.getElementById('btn-next').style.display = 'block';
+    }
+
+    function disableOpts() { document.querySelectorAll('.opt').forEach(b => b.disabled = true); }
+
+    function nextQ() { cur++; cur >= 10 ? showResult() : loadQ(); }
+
+    function showResult() {
+      document.getElementById('quiz-screen').style.display = 'none';
+      document.getElementById('result-screen').style.display = 'block';
+      document.getElementById('final-score').textContent = score + '/100';
+      document.getElementById('r-correct').textContent = correct;
+      document.getElementById('r-wrong').textContent = wrong;
+      document.getElementById('r-time').textContent = Math.round(totalTime / 10) + 's';
+      let rank, msg;
+      if (score >= 90) { rank = 'COSMIC LEGEND'; msg = 'Extraordinary! You have the knowledge of a true astrophysicist.'; }
+      else if (score >= 70) { rank = 'STAR NAVIGATOR'; msg = 'Impressive! Your cosmic knowledge is outstanding.'; }
+      else if (score >= 50) { rank = 'SPACE EXPLORER'; msg = 'Good work! Keep studying the cosmos to level up.'; }
+      else if (score >= 30) { rank = 'SPACE CADET'; msg = 'A promising start! The universe has much more to reveal.'; }
+      else { rank = 'EARTHLING'; msg = 'Every expert was once a beginner. Try again and aim higher!'; }
+      document.getElementById('rank-badge').textContent = 'RANK: ' + rank;
+      document.getElementById('result-msg').textContent = msg;
+      new Promise(resolve => setTimeout(resolve, 300)).then(() => document.getElementById('result-screen').scrollIntoView({ behavior: 'smooth' }));
+    }
+
+    function restartQuiz() {
+      document.getElementById('result-screen').style.display = 'none';
+      document.getElementById('start-screen').style.display = 'block';
+    }
+  </script>
+</body>
+
+</html>
